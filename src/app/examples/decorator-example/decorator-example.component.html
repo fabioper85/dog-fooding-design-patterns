@@ -1,0 +1,194 @@
+<structural-pg-desc></structural-pg-desc>
+<div class="accordion" id="decoratorAccordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_1"
+        aria-expanded="false"
+        aria-controls="collapse_1"
+      >
+        <strong>Descrizione</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_1"
+      class="accordion-collapse collapse"
+      data-bs-parent="#decoratorAccordionExample"
+      style=""
+    >
+      <div class="accordion-body">
+        <p>
+          È un design pattern strutturale che consente di aggiungere
+          funzionalità aggiuntive a un oggetto in modo dinamico. Questo pattern
+          consente di estendere le capacità di un oggetto senza modificarne la
+          sua struttura di base.
+        </p>
+        <p class="mb-0">
+          È particolarmente utile quando si desidera aggiungere o modificare il
+          comportamento di un oggetto in modo flessibile e modulare, senza dover
+          creare sottoclassi per ogni possibile combinazione di funzionalità.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_2"
+        aria-expanded="false"
+        aria-controls="collapse_2"
+      >
+        <strong>Caratteristiche</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_2"
+      class="accordion-collapse collapse"
+      data-bs-parent="#decoratorAccordionExample"
+    >
+      <div class="accordion-body">
+        <ul class="mb-0">
+          <li>
+            <strong>Componente:</strong> Definisce l'interfaccia base per gli
+            oggetti che vogliamo decorare. Può essere una classe o
+            un'interfaccia
+          </li>
+          <li>
+            <strong>Componente Concreto:</strong> È l'implementazione di base
+            del componente che vogliamo decorare. Questa classe fornisce
+            l'implementazione di default per il comportamento
+          </li>
+          <li>
+            <strong>Decorator:</strong> È una classe astratta che estende il
+            componente base e contiene un riferimento a un oggetto del tipo
+            componente. Questo è il componente principale che aggiunge
+            funzionalità aggiuntive.
+          </li>
+          <li>
+            <strong>Decoratori Concreti:</strong> Sono le classi che estendono
+            il Decorator astratto e aggiungono funzionalità specifiche. Possono
+            aggiungere funzionalità prima o dopo l'esecuzione del metodo del
+            componente principale.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_2_1"
+        aria-expanded="false"
+        aria-controls="collapse_2_1"
+      >
+        <strong>Pro e Contro</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_2_1"
+      class="accordion-collapse collapse"
+      data-bs-parent="#decoratorAccordionExample"
+    >
+      <div class="accordion-body">
+        <h6 class="text-success fw-bold">Pro</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Flessibilità:</strong> Permette di aggiungere o rimuovere
+            funzionalità in modo dinamico a un oggetto senza modificare la sua
+            struttura di base
+          </li>
+          <li>
+            <strong>Semplifica il design:</strong> Evita la creazione di molte
+            sottoclassi per combinazioni di funzionalità diverse
+          </li>
+          <li>
+            <strong>Separazione delle responsabilità:</strong> Ogni decoratore
+            si occupa di una funzionalità specifica, mantenendo il codice pulito
+            e ben organizzato
+          </li>
+          <li>
+            <strong>Estendibilità:</strong> È possibile comporre più decoratori
+            per aggiungere più funzionalità in modo cumulativo
+          </li>
+        </ul>
+        <h6 class="text-danger fw-bold mt-3">Contro</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Possibile complessità:</strong> L'aggiunta di molti
+            decoratori può rendere il codice più complesso e difficile da
+            comprendere
+          </li>
+          <li>
+            <strong>Ordine dei decoratori:</strong> L'ordine in cui vengono
+            applicati i decoratori può influenzare il risultato finale, il che
+            può essere difficile da gestire in alcuni casi
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_3"
+        aria-expanded="false"
+        aria-controls="collapse_3"
+      >
+        <span class="badge text-bg-warning">Esempio</span>
+      </button>
+    </h2>
+    <div
+      id="collapse_3"
+      class="accordion-collapse collapse"
+      data-bs-parent="#decoratorAccordionExample"
+    >
+      <div class="accordion-body">
+        <small>Scegli la consumazione</small>
+        <select
+          class="form-select form-select-sm"
+          aria-label="dishSelector"
+          [(ngModel)]="selectedDish"
+          (change)="onDishChange($event)"
+        >
+          @for (op of dishOps; track op.value) {
+          <option [selected]="op.selected" [value]="op.value">
+            {{ op.label }}
+          </option>
+          }
+        </select>
+        @if(selectedDish && selectedDishDressing) {
+        <small class="d-block mt-3">Scegli l'aggiunta</small>
+        <select
+          class="form-select form-select-sm"
+          aria-label="dishSelector"
+          aria-placeholder="Scegli una pietanza"
+          [(ngModel)]="selectedDishDressing"
+          (change)="onDishDressingChange($event)"
+        >
+          @for (op of currentDishDressingOps; track op.value) {
+          <option [selected]="op.selected" [value]="op.value">
+            {{ op.label }}
+          </option>
+          }</select
+        >} @if(totalPrice){
+        <p class="mb-0 mt-4">Total price: {{ totalPrice }}</p>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<example-link
+  [exampleType]="exampleType"
+  textLink="Decorator pattern link" />

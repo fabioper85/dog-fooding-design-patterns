@@ -1,0 +1,194 @@
+<creational-pg-desc></creational-pg-desc>
+<div class="accordion" id="singletonAccordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_1"
+        aria-expanded="false"
+        aria-controls="collapse_1"
+      >
+        <strong>Descrizione</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_1"
+      class="accordion-collapse collapse"
+      data-bs-parent="#singletonAccordionExample"
+      style=""
+    >
+      <div class="accordion-body">
+        <p>
+          È uno dei design pattern più semplici e utilizzati nel campo dello
+          sviluppo del software. Il suo scopo principale è quello di garantire
+          che una classe abbia una sola istanza e fornisce un punto di accesso
+          globale a quella istanza.
+        </p>
+        <p>
+          Ciò è utile in situazioni in cui una sola istanza di una classe è
+          sufficiente per gestire tutte le richieste del programma, come nel
+          caso di un logger, un gestore di configurazione o un pool di
+          connessioni al database.
+        </p>
+        <p class="mb-0">
+          Il pattern Singleton viene utilizzato in molte librerie e framework
+          JavaScript (aka Angular, React...) per implementare logger, caching,
+          pool di connessioni al database e molti altri componenti che devono
+          esistere in una sola istanza.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_2"
+        aria-expanded="false"
+        aria-controls="collapse_2"
+      >
+        <strong>Caratteristiche</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_2"
+      class="accordion-collapse collapse"
+      data-bs-parent="#singletonAccordionExample"
+    >
+      <div class="accordion-body">
+        <ul class="mb-0">
+          <li>
+            Assicura che una classe abbia una sola istanza e fornisce un punto
+            di accesso globale a tale istanza, utile per gestire risorse
+            condivise come configurazioni, logger, cache, etc...
+          </li>
+          <li>
+            <strong>Un costruttore privato:</strong> Per impedire la creazione
+            di istanze della classe tramite il costruttore, il costruttore è
+            reso privato in modo che non possa essere invocato esternamente.
+          </li>
+          <li>
+            <strong>Un metodo statico per ottenere l'istanza:</strong> Una
+            classe Singleton "deve" fornire un metodo statico che restituisce
+            sempre la stessa istanza della classe. Questo metodo è comunemente
+            chiamato
+            <i><pre class="d-inline">getInstance()</pre></i>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_2_1"
+        aria-expanded="false"
+        aria-controls="collapse_2_1"
+      >
+        <strong>Pro e Contro</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_2_1"
+      class="accordion-collapse collapse"
+      data-bs-parent="#singletonAccordionExample"
+    >
+      <div class="accordion-body">
+        <h6 class="text-success fw-bold">Pro</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Controllo sull'istanza:</strong> Il pattern Singleton
+            fornisce un controllo preciso sull'istanza di una classe, garantendo
+            che sia unica e accessibile globalmente
+          </li>
+          <li>
+            <strong>Riduzione dell'overhead di creazione:</strong> Poiché esiste
+            una sola istanza, evita l'overhead di creazione di nuove istanze
+            multiple
+          </li>
+          <li>
+            <strong>Accesso controllato:</strong> Fornisce un modo sicuro per
+            accedere all'istanza, evitando la creazione accidentale di nuove
+            istanze
+          </li>
+        </ul>
+        <h6 class="text-danger fw-bold mt-3">Contro</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Difficile da testare:</strong> A causa della sua dipendenza
+            globale, il Singleton può rendere difficile il testing unitario.
+          </li>
+          <li>
+            <strong>Riduzione dell'overhead di creazione:</strong> Poiché esiste
+            una sola istanza, evita l'overhead di creazione di nuove istanze
+            multiple
+          </li>
+          <li>
+            <strong>Problemi di concorrenza:</strong> In un ambiente
+            multithreading, potrebbero sorgere problemi di concorrenza se non
+            implementato correttamente
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_3"
+        aria-expanded="false"
+        aria-controls="collapse_3"
+      >
+        <span class="badge text-bg-warning">Esempio</span>
+      </button>
+    </h2>
+    <div
+      id="collapse_3"
+      class="accordion-collapse collapse"
+      data-bs-parent="#singletonAccordionExample"
+    >
+      <div class="accordion-body">
+        <div class="row justify-content-center">
+          <div class="d-flex justify-content-between w-75">
+            <button
+              class="btn btn-primary"
+              (click)="getInstance()"
+              [disabled]="
+                (instances.length === 2 && !instancesChecked) ||
+                isGettingInstance
+              "
+            >
+              Get instance
+            </button>
+            <button
+              class="btn btn-warning"
+              (click)="checkInstances()"
+              [disabled]="
+                (instances.length < 2 && !instancesChecked) ||
+                (instances.length === 2 && instancesChecked)
+              "
+            >
+              Check instances
+            </button>
+          </div>
+          @if(exampleResult) {
+          <pre class="mt-4">{{ exampleResult }}</pre>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<example-link
+  [exampleType]="exampleType"
+  textLink="Singleton pattern link" />

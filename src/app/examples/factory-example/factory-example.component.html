@@ -1,0 +1,227 @@
+<creational-pg-desc></creational-pg-desc>
+<div class="accordion" id="factoryAccordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_1"
+        aria-expanded="false"
+        aria-controls="collapse_1"
+      >
+        <strong>Descrizione</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_1"
+      class="accordion-collapse collapse"
+      data-bs-parent="#factoryAccordionExample"
+      style=""
+    >
+      <div class="accordion-body">
+        <p class="mb-0">
+          Il design pattern <strong>Factory, o Factory Method,</strong> è un
+          pattern creazionale che fornisce un'interfaccia per la creazione di
+          oggetti in una gerarchia di classi, ma delega la decisione su quale
+          classe concreta istanziare alle sottoclassi. In questo modo, il
+          Factory Method permette di creare oggetti senza specificare la classe
+          esatta di oggetto da creare.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_2"
+        aria-expanded="false"
+        aria-controls="collapse_2"
+      >
+        <strong>Caratteristiche</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_2"
+      class="accordion-collapse collapse"
+      data-bs-parent="#factoryAccordionExample"
+    >
+      <div class="accordion-body">
+        <ul class="mb-0">
+          <li>
+            <strong>Interfaccia o classe base:</strong> Definisce l'interfaccia
+            per gli oggetti che il Factory Method deve creare. Questa può essere
+            un'interfaccia o una classe astratta.
+          </li>
+          <li>
+            <strong>Classe concreta o sottoclasse:</strong> Rappresenta le
+            classi effettive che il Factory Method può istanziare. Queste classi
+            estendono l'interfaccia o la classe base.
+          </li>
+          <li>
+            <strong>Factory Method:</strong> È un metodo, spesso dichiarato come
+            astratto in una classe base, che le sottoclassi devono implementare
+            per creare istanze delle classi concrete.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_2_1"
+        aria-expanded="false"
+        aria-controls="collapse_2_1"
+      >
+        <strong>Pro e Contro</strong>
+      </button>
+    </h2>
+    <div
+      id="collapse_2_1"
+      class="accordion-collapse collapse"
+      data-bs-parent="#singletonAccordionExample"
+    >
+      <div class="accordion-body">
+        <h6 class="text-success fw-bold">Pro</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Decentramento della creazione:</strong> Il Factory Method
+            decentralizza la logica di creazione degli oggetti, spostandola
+            dalle classi client a classi specializzate
+          </li>
+          <li>
+            <strong>Astrazione delle classi client:</strong> Le classi client
+            non devono conoscere le classi concrete da cui vengono creati gli
+            oggetti, ma solo l'interfaccia o la classe base
+          </li>
+          <li>
+            <strong>Flessibilità nell'estensione:</strong> È facile aggiungere
+            nuove implementazioni di oggetti senza modificare il codice
+            esistente
+          </li>
+        </ul>
+        <h6 class="text-danger fw-bold mt-3">Contro</h6>
+        <ul class="mb-0">
+          <li>
+            <strong>Complessità aggiuntiva:</strong> L'introduzione di Factory
+            Methods può aumentare la complessità del codice, specialmente quando
+            si hanno molte sottoclassi con Factory Methods diversi
+          </li>
+          <li>
+            <strong>Creazione di classi aggiuntive:</strong> Ogni nuova classe
+            concreta richiede una nuova sottoclasse Factory, che può portare
+            alla creazione di molte classi aggiuntive. multiple
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse_3"
+        aria-expanded="false"
+        aria-controls="collapse_3"
+      >
+        <span class="badge text-bg-warning">Esempio</span>
+      </button>
+    </h2>
+    <div
+      id="collapse_3"
+      class="accordion-collapse collapse"
+      data-bs-parent="#singletonAccordionExample"
+    >
+      <div class="accordion-body">
+        <div class="row justify-content-center g-0">
+          <button
+            class="btn btn-warning"
+            (click)="createFactory()"
+            [disabled]="factory"
+          >
+            Crea Fabbrica di dipendenti @if(factory){<span
+              class="badge text-bg-success"
+              >Done!</span
+            >}
+          </button>
+        </div>
+        @if(factory){
+        <h6 class="text-center mt-3">Aggiungi impiegato</h6>
+        <div class="row justify-content-between">
+          <div class="col-12 col-sm-3 mb-2 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="employeeName"
+              placeholder="Nome"
+              [(ngModel)]="newEmployeeName"
+            />
+          </div>
+          <div class="col-12 col-sm-3 mb-2 mb-sm-0">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="employeeLastname"
+              placeholder="Cognome"
+              [(ngModel)]="newEmployeeLastname"
+            />
+          </div>
+          <div class="col-12 col-sm-4 mb-2 mb-sm-0">
+            <select
+              class="form-select form-select-sm"
+              aria-label="employeeTypeSelect"
+              [(ngModel)]="newEmployeeTypeSelect"
+            >
+              @for (op of employeeTypeOps; track op.value) {
+              <option [selected]="op.selected" [value]="op.value">
+                {{ op.value }}
+              </option>
+              }
+            </select>
+          </div>
+          <div class="col-12 col-sm-2 mb-2 mb-sm-0">
+            <button
+              class="btn btn-outline-primary btn-sm w-100"
+              (click)="createEmployee()"
+            >
+              Crea
+            </button>
+          </div>
+        </div>
+        } @if(employees.length >= 1) {
+        <ul class="list-group p-0 mt-3">
+          <li class="list-group-item" *ngFor="let e of employees">
+            <div class="row justify-content-between align-items-center g-0">
+              <div class="col-10">
+                <span>{{ e.name }} {{ e.surname }}</span>
+              </div>
+              <div class="col-2 text-end">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  style="--bs-btn-font-size: .75rem;"
+                  (click)="e.greeting()"
+                >
+                  Saluta
+                </button>
+              </div>
+            </div>
+          </li>
+        </ul>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+<example-link
+  [exampleType]="exampleType"
+  textLink="Factory Method pattern link" />
