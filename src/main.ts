@@ -10,6 +10,7 @@ import { SingletonExampleComponent } from './app/examples/singleton-example/sing
 import { FactoryExampleComponent } from './app/examples/factory-example/factory-example.component';
 import { ObserverExampleComponent } from './app/examples/observer-example/observer-example.component';
 import { DecoratorExampleComponent } from './app/examples/decorator-example/decorator-example.component';
+import { StrategyExampleComponent } from './app/examples/strategy-example/strategy-example.component';
 
 @Component({
   imports: [
@@ -18,6 +19,7 @@ import { DecoratorExampleComponent } from './app/examples/decorator-example/deco
     FactoryExampleComponent,
     ObserverExampleComponent,
     DecoratorExampleComponent,
+    StrategyExampleComponent,
     CommonModule,
   ],
   selector: 'app-root',
@@ -33,6 +35,7 @@ import { DecoratorExampleComponent } from './app/examples/decorator-example/deco
           <factory-example *ngSwitchCase="'FACTORY'"></factory-example>
           <observer-example *ngSwitchCase="'OBSERVER'"></observer-example>
           <decorator-example *ngSwitchCase="'DECORATOR'"></decorator-example>
+          <strategy-example *ngSwitchCase="'STRATEGY'"></strategy-example>
         </div>
       </ng-container>
     </div></div>`,
