@@ -145,7 +145,7 @@ export class ExampleSelectorComponent implements OnInit {
       value: EXAMPLE_TYPE.STRATEGY,
       label: 'Strategy',
       selected: false,
-      disabled: false,
+      disabled: true,
     },
     {
       patternType: PATTERN_TYPE.BEHAVIOURAL,
